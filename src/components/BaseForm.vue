@@ -17,14 +17,7 @@
             <span class="form-label mb-2">验证码登录</span>
             <div class="flex justify-between items-center">
                 <p class="mr-4">暂不设置密码，登录时使用验证码进行登录</p>
-                <span
-                    class="toggle"
-                    role="checkbox"
-                    tabindex="0"
-                    :aria-checked="codeLoginReceive.toString()"
-                    @click="toggle"
-                    @keydown.space.prevent="toggle"
-                ></span>
+                <ToggleInput v-model="codeLoginReceive" />
             </div>
         </div>
         <div class="text-right">
@@ -37,6 +30,8 @@
 </template>
 
 <script>
+import ToggleInput from '@/components/ToggleInput.vue'
+
 export default {
     data() {
         return {
@@ -50,10 +45,10 @@ export default {
                 phone: this.phone,
                 codeLoginReceive: this.codeLoginReceive
             })
-        },
-        toggle() {
-            this.codeLoginReceive = !this.codeLoginReceive
         }
+    },
+    components: {
+        ToggleInput,
     },
 }
 </script>
